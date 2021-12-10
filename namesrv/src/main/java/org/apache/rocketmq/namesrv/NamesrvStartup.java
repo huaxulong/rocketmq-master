@@ -80,7 +80,7 @@ public class NamesrvStartup {
 
 
         Options options = ServerUtil.buildCommandlineOptions(new Options());
-        // 启动时的参数信息 有commandLine 管理了。
+        // 启动时的参数信息 由commandLine 管理了。
         commandLine = ServerUtil.parseCmdLine("mqnamesrv", args, buildCommandlineOptions(options), new PosixParser());
         if (null == commandLine) {
             System.exit(-1);

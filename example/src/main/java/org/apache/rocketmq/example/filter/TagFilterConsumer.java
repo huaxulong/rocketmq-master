@@ -31,6 +31,8 @@ public class TagFilterConsumer {
 
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("please_rename_unique_group_name");
 
+        consumer.setNamesrvAddr("127.0.0.1:9876");
+
         consumer.subscribe("TagFilterTest", "TagA || TagC");
 
         consumer.registerMessageListener(new MessageListenerConcurrently() {

@@ -422,7 +422,7 @@ public abstract class RebalanceImpl {
                     }
 
 
-                    // 当mq还归属当前消费者，回执 else if
+                    // 当mq还归属当前消费者，会执行 else if
                     // 条件成立：说明pq已经 2 分钟未发生过 到服务器 拉消息的请求了..可能出bug了,,
                 } else if (pq.isPullExpired()) {
                     switch (this.consumeType()) {

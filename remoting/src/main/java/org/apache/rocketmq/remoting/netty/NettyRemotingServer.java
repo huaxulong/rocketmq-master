@@ -89,7 +89,7 @@ public class NettyRemotingServer extends NettyRemotingAbstract implements Remoti
     private static final String TLS_HANDLER_NAME = "sslHandler";
     private static final String FILE_REGION_ENCODER_NAME = "fileRegionEncoder";
 
-    // 共享的处理器，多个ch 都使用同一个 对象。
+    // 共享的处理器，多个 channel 都使用同一个 对象。
     // sharable handlers
     private HandshakeHandler handshakeHandler;
     private NettyEncoder encoder;
@@ -103,8 +103,8 @@ public class NettyRemotingServer extends NettyRemotingAbstract implements Remoti
     public NettyRemotingServer(final NettyServerConfig nettyServerConfig,
         final ChannelEventListener channelEventListener) {
         // 服务器 向 客户端主动发起请求时  并发限制。
-        // 1. 单向请求的并发限制
-        // 2. 异步请求的并发限制
+        // 1. 单向请求的并发限制 256
+        // 2. 异步请求的并发限制 64
         super(nettyServerConfig.getServerOnewaySemaphoreValue(), nettyServerConfig.getServerAsyncSemaphoreValue());
 
         this.serverBootstrap = new ServerBootstrap();

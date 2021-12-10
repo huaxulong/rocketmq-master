@@ -16,7 +16,6 @@
  */
 package org.apache.rocketmq.example.quickstart;
 
-import java.util.List;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
@@ -26,10 +25,13 @@ import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
 
+import java.sql.SQLOutput;
+import java.util.List;
+
 /**
  * This example shows how to subscribe and consume messages using providing {@link DefaultMQPushConsumer}.
  */
-public class Consumer {
+public class Consumer1 {
 
     public static void main(String[] args) throws InterruptedException, MQClientException {
 
@@ -52,12 +54,17 @@ public class Consumer {
         consumer.setNamesrvAddr("127.0.0.1:9876");
 
         /*
+         * Specify where to start in case the specified consumer group is a brand new one.
+         */
+//        consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET);
+
+        /*
          * Subscribe one more more topics to consume.
          */
         /**
          * 设置消息tag 过滤
          */
-        consumer.subscribe("TopicTest", "TagB");
+        consumer.subscribe("TopicTest", "TagA");
 
         /**
          * 设置消息接收方式为广播消费模式

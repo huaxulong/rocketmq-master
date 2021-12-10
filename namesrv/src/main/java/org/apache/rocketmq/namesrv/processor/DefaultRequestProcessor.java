@@ -94,7 +94,7 @@ public class DefaultRequestProcessor extends AsyncNettyRequestProcessor implemen
                 if (brokerVersion.ordinal() >= MQVersion.Version.V3_0_11.ordinal()) {
                     return this.registerBrokerWithFilterServer(ctx, request);
                 } else {
-                    // 参数1：包装 serverhandler 的ctx
+                    // 参数1：包装 serverhandler 的ctx  路由注册，，，
                     // 参数2：request ，客户端发送的 网络层请求对象 RemotingCommand
                     return this.registerBroker(ctx, request);
                 }
